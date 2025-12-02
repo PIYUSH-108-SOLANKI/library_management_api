@@ -1,6 +1,7 @@
 const mongoose= require('mongoose');
 
-mongoose.connect('mongodb+srv://piyushsolanki1916_db_user:YsFMjQvKK9uRDGC8@checkmatecluster.aatrtaw.mongodb.net/?appName=CheckMatecluster' , );
+mongoose.connect("mongodb://localhost:27017/");
+
 const db= mongoose.connection;
 
 db.on('connected' , ()=>{
@@ -13,6 +14,3 @@ db.on('error' , (err)=>{
 });
 
 module.exports= db;
-
-
-

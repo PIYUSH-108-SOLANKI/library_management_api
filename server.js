@@ -1,7 +1,12 @@
 const express = require('express');
 require('dotenv').config();
 const app = express();
+const db = require('./src/config/db'); // Import database connection
 const bookRouter = require('./src/routes/BookRouter');
+
+// Middleware
+app.use(express.json()); // Parse JSON requests
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded requests
 
 
 requestlogger = (req,res , next )=>{
@@ -13,6 +18,10 @@ requestlogger = (req,res , next )=>{
 
 app.get('/' , (request , response)=>{
     console.log('Welcome to the Library Management API');
+    response.status(200).json({
+        message: 'Welcome to the Library Management API',
+        status: 'OK'
+    });
 })
 
 app.get('/health' , (request , response)=>{
